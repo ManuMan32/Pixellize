@@ -1,0 +1,4 @@
+.screen {
+  height: 100vh;
+  background-color: var(--background);
+}

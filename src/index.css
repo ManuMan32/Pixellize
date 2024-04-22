@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bitter", serif;
+}
+
+:root {
+  --background: #161A30;
+  --primary: #B6BBC4;
+  --secondary: #31304D;
+  --text: #F0ECE5;
+}
