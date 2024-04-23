@@ -2,6 +2,7 @@ import './home.css';
 import HomeButton from './homeButton/homeButton';
 import { useState } from 'react';
 import LanguageSelect from './languageSelect/languageSelect';
+import lang from '../../lang';
 const Home: React.FC = () => {
   const [mainWindow, setMainWindow] = useState<number>(0);
   return (
@@ -11,10 +12,10 @@ const Home: React.FC = () => {
         <img src='/logo.png' />
       </div>
       {(mainWindow === 0) ? (<div className='buttonsBox'>
-        <HomeButton title='New' description='Create a new project' />
-        <HomeButton title='Galery' description='See your creations or edit them' />
-        <HomeButton title='Guide' description='Learn how to use the editor' />
-        <HomeButton title='Options' description='Customize the page to your liking' />
+        <HomeButton title={lang(0)} description={lang(4)} />
+        <HomeButton title={lang(1)} description={lang(5)} />
+        <HomeButton title={lang(2)} description={lang(6)} />
+        <HomeButton title={lang(3)} description={lang(7)} />
       </div>) : (
         <div></div>
       )}

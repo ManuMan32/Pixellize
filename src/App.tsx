@@ -2,9 +2,10 @@ import { useState } from 'react'
 import './App.css'
 import Home from './components/home/home';
 import { Language, ScreenState } from './model';
+import { GlobalContext } from './globalContext';
 
 function App() {
-  const [language, setLanguage] = useState<Language>("en");
+  const [actualLanguage, setActualLanguage] = useState<Language>("en");
   const [screenState, setScreenState] = useState<ScreenState>("home");
   let renderizedScreen;
   switch(screenState) {
@@ -13,7 +14,12 @@ function App() {
   }
   return (
     <div className='screen'>
-      {renderizedScreen}
+      <GlobalContext.Provider value={{
+        actualLanguage,
+        setActualLanguage
+      }}>
+        {renderizedScreen}
+      </GlobalContext.Provider>
     </div>
   )
 }
