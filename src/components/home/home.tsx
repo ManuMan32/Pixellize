@@ -1,11 +1,13 @@
 import './home.css';
 import HomeButton from './homeButton/homeButton';
 import { useState } from 'react';
+import LanguageSelect from './languageSelect/languageSelect';
 const Home: React.FC = () => {
   const [mainWindow, setMainWindow] = useState<number>(0);
   return (
     <div className='homeScreen'>
       <div className='titleBox'>
+        <LanguageSelect />
         <img src='/logo.png' />
       </div>
       {(mainWindow === 0) ? (<div className='buttonsBox'>

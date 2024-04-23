@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import './App.css'
 import Home from './components/home/home';
+import { Language, ScreenState } from './model';
 
 function App() {
-  const [screenState, setScreenState] = useState<number>(0);
+  const [language, setLanguage] = useState<Language>("en");
+  const [screenState, setScreenState] = useState<ScreenState>("home");
   let renderizedScreen;
   switch(screenState) {
-    case 0: renderizedScreen = <Home />
+    case "home": renderizedScreen = <Home />
       break;
   }
   return (
