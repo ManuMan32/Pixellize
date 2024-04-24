@@ -14,6 +14,7 @@
   flex: 3;
   margin: 0 20px;
   border-top: 2px solid var(--primary);
+  animation: 1s ease forwards appear;
 }
 .buttonsBox {
   display: flex;
