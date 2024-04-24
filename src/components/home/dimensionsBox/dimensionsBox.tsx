@@ -1,3 +1,4 @@
+import lang from '../../../lang';
 import './dimensionsBox.css';
 interface Props {
   axis: "X" | "Y"
@@ -5,7 +6,7 @@ interface Props {
 const DimensionsBox: React.FC<Props> = ({ axis }) => {
   return (
     <div className={'box dimensionsBox' + axis}>
-      <span className='dimensionsBoxText'>Set the {axis} size (in pixels)</span>
+      <span className='dimensionsBoxText'>{axis} {lang(10)}</span>
       <div className='dimensionsBoxInputContainer'>
         <input className='button dimensionsBoxInput' type='number' defaultValue={50} placeholder='Number' max={256} min={0} onChange={e => {
           if (parseInt(e.target.value) > 256) e.target.value = "256";

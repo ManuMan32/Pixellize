@@ -13,6 +13,9 @@ const lang = (key: number) => {
         case 5: return "See your creations or edit them"
         case 6: return "Learn how to use the editor"
         case 7: return "Customize the page to your liking"
+        case 8: return "Dimensions"
+        case 9: return "Create"
+        case 10: return "(In pixels)"
         default: return `Translation error, key: ${key}`
       }
     case "es":
@@ -25,6 +28,9 @@ const lang = (key: number) => {
         case 5: return "Mira tus creaciones y editalas"
         case 6: return "Aprende a usar el editor"
         case 7: return "Configura la página a tu gusto"
+        case 8: return "Dimensiones"
+        case 9: return "Crear"
+        case 10: return "(En píxeles)"
         default: return `Error de traducción, key: ${key}`
       }
   }
