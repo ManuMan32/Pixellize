@@ -11,3 +11,29 @@
   --secondary: #31304D;
   --text: #F0ECE5;
 }
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary);
+  border-radius: 20px;
+}
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--primary);
+  font-size: 40px;
+  color: var(--secondary);
+  opacity: .5;
+  cursor: pointer;
+}
+.button:hover { opacity: .7; }
+.button span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

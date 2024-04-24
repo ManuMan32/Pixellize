@@ -5,27 +5,11 @@
   width: 100%;
   flex: 1;
 }
-.button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.buttonTitle {
   width: 60%;
   height: 80%;
-  border: none;
-  border-radius: 30px;
-  background-color: var(--primary);
-  font-size: 40px;
-  color: var(--secondary);
-  opacity: .5;
-  cursor: pointer;
 }
-.button:hover { opacity: .7; }
-.button span {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-.buttonTitle { font-weight: bold; }
+.buttonTitleSpan { font-weight: bold; }
 .buttonDescriptionCollapse {
   width: 100%;
   height: 0;

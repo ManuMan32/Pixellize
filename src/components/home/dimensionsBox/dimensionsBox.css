@@ -1,0 +1,36 @@
+.dimensionsBoxX, .dimensionsBoxY {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+}
+.dimensionsBoxText {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  font-size: 20px;
+  text-align: center;
+}
+.dimensionsBoxInputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 2;
+  width: 100%;
+}
+.dimensionsBoxInput {
+  width: 60% !important;
+  height: 60% !important;
+  font-size: 29px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  opacity: .3;
+  cursor: text;
+  outline: none;
+}
+.dimensionsBoxInput:hover {
+  opacity: .4;
+}

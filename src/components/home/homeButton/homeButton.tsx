@@ -6,8 +6,8 @@ interface Props {
 const HomeButton: React.FC<Props> = ({ title, description}) => {
   return (
     <div className='buttonContainer'>
-      <button type='button' className='button'>
-        <span className='buttonTitle'>{title}</span>
+      <button type='button' className='button buttonTitle'>
+        <span className='buttonTitleSpan'>{title}</span>
         <div className='buttonDescriptionCollapse'>
           <span className='buttonDescription'>{description}</span>
         </div>
