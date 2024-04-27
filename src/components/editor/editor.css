@@ -4,8 +4,12 @@
   height: 100vh;
   place-items: center;
 }
-.editorBar { background-color: var(--secondary); }
+.editorBar { background-color: var(--secondary); border-radius: 20px; }
 .editorToolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   grid-row: 1 / 3;
   width: 6vw;
   height: 95vh;
