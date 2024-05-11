@@ -8,7 +8,5 @@
 }
 #canvas {
   position: relative;
-  width: 64px;
-  height: 64px;
   background-color: white;
 }
