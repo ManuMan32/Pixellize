@@ -16,6 +16,8 @@ const CanvasBox: React.FC = () => {
     canvasBox.rect = cb?.getBoundingClientRect();
     canvasBox.x = canvasBox.rect!.x;
     canvasBox.y = canvasBox.rect!.y;
+  }, []);
+  useEffect(() => {
     // Canvas grid
     const canvas: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
     canvas.width = canvasSize.x * pixelSize;
@@ -27,7 +29,7 @@ const CanvasBox: React.FC = () => {
     for (let j = 0; j < canvasSize.y * pixelSize; j += pixelSize * 2) {
       ctx.fillRect(0, j, canvasSize.x * pixelSize, 1);
     }
-  }, [])
+  }, [pixelSize]);
   function handleMouseMove(e: any) {
     if (e.buttons === 4) {
       setCanvasMovement({
@@ -36,8 +38,14 @@ const CanvasBox: React.FC = () => {
       });
     }
   }
+  function handleWheel(e: any) {
+    const movement = (e.deltaY / 100) * -1;
+    const newPixelSize = pixelSize + movement;
+    if (newPixelSize >= 1 && newPixelSize <= 30)
+    setPixelSize(pixelSize + movement);
+  }
   return (
-    <div className='editorBar editorCanvas' onMouseMove={handleMouseMove}>
+    <div className='editorBar editorCanvas' onMouseMove={handleMouseMove} onWheel={handleWheel}>
       <canvas id='canvas' style={{
         width: `${canvasSize.x * pixelSize}px`,
         height: `${canvasSize.y * pixelSize}px`,
