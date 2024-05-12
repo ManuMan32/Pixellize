@@ -5,6 +5,6 @@
   margin: 10px;
 }
 .editorToolButtonSelected {
-  background-color: var(--text);
-  opacity: .7;
+  background-color: var(--text) !important;
+  opacity: .7 !important;
 }

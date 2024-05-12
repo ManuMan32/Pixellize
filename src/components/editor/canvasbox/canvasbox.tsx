@@ -1,3 +1,5 @@
+import { TOOLS } from '../../../model';
+import { useEditorContext } from '../editorContext';
 import './canvasbox.css';
 import { useState, useEffect } from 'react';
 interface CanvasBox { rect: DOMRect | undefined, x: number, y: number }
@@ -8,9 +10,10 @@ const canvasBox: CanvasBox = {
   y: 0,
 }
 const CanvasBox: React.FC = () => {
-  const [canvasSize, setCanvasSize] = useState<Coordinates>({ x: 64, y: 64 });
+  const [canvasSize] = useState<Coordinates>({ x: 64, y: 64 });
   const [pixelSize, setPixelSize] = useState<number>(6);
   const [canvasMovement, setCanvasMovement] = useState<Coordinates>({ x: 0, y: 0 });
+  const { tool } = useEditorContext();
   useEffect(() => {
     const cb = document.querySelector('.editorCanvas');
     canvasBox.rect = cb?.getBoundingClientRect();
@@ -58,30 +61,44 @@ const CanvasBox: React.FC = () => {
     if (newPixelSize >= 1 && newPixelSize <= 40)
       setPixelSize(pixelSize + movement);
   }
-  function handleClick(e: any) {
-    const canvas: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
-    const ctx: CanvasRenderingContext2D = canvas!.getContext('2d') as CanvasRenderingContext2D;
-    const canvasRect = canvas.getBoundingClientRect();
-    const positionX = e.clientX - canvasRect.x;
-    const positionY = e.clientY - canvasRect.y;
-    const offsetX = positionX % pixelSize;
-    const offsetY = positionY % pixelSize;
-    ctx.fillRect(positionX - offsetX, positionY - offsetY, pixelSize, pixelSize);
+  // Drawing functions
+  let drawing = false;
+  function drawStart(e: any) {
+    drawing = true;
+    draw(e);
+  }
+  function draw(e: any) {
+    if (drawing && e.buttons === 1) {
+      const canvas: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
+      const ctx: CanvasRenderingContext2D = canvas!.getContext('2d') as CanvasRenderingContext2D;
+      const canvasRect = canvas.getBoundingClientRect();
+      const positionX = e.clientX - canvasRect.x;
+      const positionY = e.clientY - canvasRect.y;
+      const offsetX = positionX % pixelSize;
+      const offsetY = positionY % pixelSize;
+      if (tool == TOOLS.ERASER) ctx.fillStyle = 'white'
+      else ctx.fillStyle = 'black'
+      ctx.fillRect(positionX - offsetX, positionY - offsetY, pixelSize, pixelSize);
+    }
+  }
+  function drawEnd(e: any) {
+    drawing = false;
   }
   return (
-    <div className='editorBar editorCanvas' onMouseMove={handleMouseMove} onWheel={handleWheel} onClick={handleClick}>
+    <div className='editorBar editorCanvas' onMouseMove={handleMouseMove} onWheel={handleWheel}>
       <div className='canvasBox' style={{
-          width: `${canvasSize.x * pixelSize}px`,
-          height: `${canvasSize.y * pixelSize}px`,
-          left: `${canvasMovement.x}px`,
-          top: `${canvasMovement.y}px`
-        }}>
+        width: `${canvasSize.x * pixelSize}px`,
+        height: `${canvasSize.y * pixelSize}px`,
+        left: `${canvasMovement.x}px`,
+        top: `${canvasMovement.y}px`
+      }}>
+        <canvas id='canvasMask' onMouseDown={drawStart} onMouseMove={draw} onMouseUp={drawEnd}></canvas>
         <canvas id='canvas' style={{
           width: `${canvasSize.x * pixelSize}px`,
           height: `${canvasSize.y * pixelSize}px`
         }}>
         </canvas>
-        <canvas id='canvasMask'></canvas>
+        
       </div>
     </div>
   )
