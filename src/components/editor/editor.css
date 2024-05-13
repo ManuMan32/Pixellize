@@ -15,6 +15,17 @@
   height: 95vh;
 }
 .editorSettingsbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   width: 90vw;
   height: 9vh;
+}
+.colorBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.colorBoxTitle {
+  color: var(--text);
 }

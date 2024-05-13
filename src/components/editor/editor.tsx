@@ -16,7 +16,16 @@ const Editor: React.FC = () => {
         <div className='editorBar editorToolbar'>
           {toolsArr.map(t => <EditorToolButton buttonTool={t} key={t} />)}
         </div>
-        <div className='editorBar editorSettingsbar'></div>
+        <div className='editorBar editorSettingsbar'>
+          <div className='colorBox'>
+            <span className='colorBoxTitle'>Primary</span>
+            <input className='colorPrimary' type='color' />
+          </div>
+          <div className='colorBox'>
+            <span className='colorBoxTitle'>Secondary</span>
+            <input className='colorSecondary' type='color' />
+          </div>
+        </div>
         <CanvasBox />
       </EditorContext.Provider>
     </div>
